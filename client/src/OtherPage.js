@@ -6,6 +6,7 @@ const otherPage = ()=> {
   return (
     <div>
       I'm some other page!!
+      <Link to="/">Go back to Home</Link>
     </div>
   );
 }
