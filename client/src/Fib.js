@@ -40,10 +40,6 @@ class Fib extends Component {
     return entries;
   }
 
-  handlerInput = (event) => {
-    this.setState({ index: event.target.value });
-  }
-
   handlerSubmit =  async (event) => {
     event.preventDefault();
     await axios.post('/api/values', { index: this.state.index });
@@ -53,21 +49,20 @@ class Fib extends Component {
   render() {
     return(
       <div>
-        <from onSubmit={this.handlerSubmit}>
-          <label>Enter you index:</label>
+        <form onSubmit={this.handleSubmit}>
+          <label>Enter your index:</label>
           <input
             value={this.state.index}
-            onChange={this.handleInput}
+            onChange={event => this.setState({ index: event.target.value })}
           />
           <button>Submit</button>
-        </from>
+        </form>
 
         <h3>Indexs I have seen</h3>
         {this.renderSeenIndexs()}
 
         <h3>Calculate values</h3>
         {this.renderValues()}
-
       </div>
     );
   }
