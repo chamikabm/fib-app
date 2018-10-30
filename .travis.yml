@@ -11,7 +11,7 @@ script:
   - docker run chamika/fib-app npm test -- --coverage
 
 after_success:
-  - docker build -t chamika/multi-client ./cleint
+  - docker build -t chamika/multi-client ./client
   - docker build -t chamika/multi-server ./server
   - docker build -t chamika/multi-worker ./worker
   - docker build -t chamika/multi-nginx ./nginx
