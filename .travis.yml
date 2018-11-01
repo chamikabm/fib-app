@@ -22,4 +22,20 @@ after_success:
   - docker push chamika/multi-server
   - docker push chamika/multi-worker
   - docker push chamika/multi-nginx
+
+deploy:
+  provider: elasticbeanstalk
+  region: ap-southeast-1
+  app: fib-app
+  env: FibApp-env
+  bucket_name: elasticbeanstalk-ap-southeast-1-892586227525
+  bucket_path: docker_multi
+  on: 
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key:
+    secure: $AWS_SECRET_ACCESS_KEY
+
+
+
   
